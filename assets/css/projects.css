@@ -1,0 +1,439 @@
+/* =============================================
+   PROJECTS.CSS — Complete Redesign
+   ============================================= */
+
+/* ── HEADER SPACING ────────────────────────────────────────── */
+.section-header-left {
+  margin-bottom: clamp(20px, 4vw, 30px);
+}
+
+/* ── NEW PROJECTS GRID LAYOUTS ───────────────────────────── */
+.featured-grid-large {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
+  gap: clamp(20px, 4vw, 30px);
+  margin-bottom: clamp(30px, 5vw, 40px);
+}
+
+.featured-grid-small {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(16px, 3vw, 24px);
+}
+
+/* ── NEW PROJECT CARD ────────────────────────────── */
+.proj-card-new {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.proj-card-new:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: var(--border-accent);
+}
+
+.proj-card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.small-card .proj-card-img-wrap {
+  aspect-ratio: 16 / 10;
+}
+
+.proj-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.proj-card-new:hover .proj-card-img-wrap img {
+  transform: scale(1.08);
+}
+
+.proj-tech-overlay {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  z-index: 2;
+  padding-right: 15px;
+}
+
+.proj-tech-overlay span {
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(4px);
+  color: var(--accent);
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: clamp(0.65rem, 1vw, 0.75rem);
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.proj-card-content {
+  padding: clamp(16px, 3vw, 24px);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.proj-card-content h3 {
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.small-card .proj-card-content h3 {
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+}
+
+.proj-tagline {
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.small-card .proj-tagline {
+  font-size: clamp(0.8rem, 1.2vw, 0.85rem);
+  margin-bottom: 20px;
+}
+
+.proj-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-live {
+  flex: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--accent);
+  color: #000;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.2vw, 0.9rem);
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-live:hover {
+  background: #fbbf24;
+  transform: translateY(-2px);
+}
+
+.btn-details {
+  flex: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 18px;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: clamp(0.85rem, 1.2vw, 0.9rem);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: background 0.3s ease;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.btn-details:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--text-secondary);
+}
+
+/* ── GLOBAL TECH STACK ───────────────────────────── */
+.global-tech-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 16px);
+  margin-top: clamp(20px, 4vw, 30px);
+}
+
+.tech-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: clamp(8px, 1.5vw, 12px) clamp(16px, 3vw, 24px);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.tech-badge i {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: var(--accent);
+}
+
+.tech-badge:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+/* ── PROJECT IMPACT — ORBITAL ANIMATION ───────────── */
+
+/* Top glow separator */
+.impact-glow-line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  margin-bottom: clamp(30px, 5vw, 60px);
+  opacity: 0.5;
+}
+
+.impact-section {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-md) 0;
+}
+
+/* Ambient background glow */
+.impact-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 700px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(245,158,11,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Grid */
+.impact-orbit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(20px, 4vw, 40px);
+  align-items: center;
+}
+
+/* Card */
+.impact-orbit-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 3vw, 28px);
+  padding: clamp(24px, 4vw, 40px) clamp(16px, 3vw, 24px) clamp(24px, 4vw, 36px);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+}
+
+.impact-orbit-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(245,158,11,0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.impact-orbit-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--accent);
+  border-color: var(--accent);
+}
+
+.impact-orbit-card:hover::before { opacity: 1; }
+
+/* Hero (centre) card */
+.impact-orbit-hero {
+  border-color: rgba(245,158,11,0.4);
+  box-shadow: 0 0 40px rgba(245,158,11,0.12);
+}
+
+@media (min-width: 900px) {
+  .impact-orbit-hero { transform: scale(1.06); }
+  .impact-orbit-hero:hover { transform: scale(1.06) translateY(-10px); }
+}
+
+/* ─ Orbit SVG Ring ─ */
+.impact-orbit-ring {
+  position: relative;
+  width: clamp(120px, 15vw, 160px);
+  aspect-ratio: 1;
+  flex-shrink: 0;
+}
+
+.orbit-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.orbit-track {
+  fill: none;
+  stroke: rgba(255,255,255,0.06);
+  stroke-width: 6;
+}
+
+.orbit-fill {
+  fill: none;
+  stroke: url(#orbitGrad);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 427;       /* 2π × 68 ≈ 427 */
+  stroke-dashoffset: 427;
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.4,0,0.2,1);
+  filter: drop-shadow(0 0 6px rgba(245,158,11,0.7));
+}
+
+.orbit-fill.animated {}
+
+.orbit-fill-real {
+  stroke: url(#orbitGradGreen);
+  filter: drop-shadow(0 0 6px rgba(34,197,94,0.6));
+}
+
+.orbit-icon-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  color: var(--accent);
+  animation: orbitIconPulse 3s ease-in-out infinite;
+}
+
+.impact-orbit-hero .orbit-icon-wrap {
+  font-size: clamp(2rem, 3.5vw, 2.6rem);
+}
+
+.orbit-fill-real ~ .orbit-icon-wrap {
+  color: #22c55e;
+}
+
+@keyframes orbitIconPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  50%       { transform: translate(-50%, -50%) scale(1.12); opacity: 0.85; }
+}
+
+/* ─ Floating Particles ─ */
+.impact-orbit-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.impact-orbit-particles span {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0;
+  animation: orbitFloat 6s ease-in-out infinite;
+}
+
+.impact-orbit-card:nth-child(1) .impact-orbit-particles span:nth-child(1) { top: 15%; left: 10%;  animation-delay: 0s;   animation-duration: 5.5s; }
+.impact-orbit-card:nth-child(1) .impact-orbit-particles span:nth-child(2) { top: 70%; left: 85%;  animation-delay: 1.8s; animation-duration: 7s; }
+.impact-orbit-card:nth-child(1) .impact-orbit-particles span:nth-child(3) { top: 40%; left: 92%;  animation-delay: 3.2s; animation-duration: 6s; }
+
+.impact-orbit-card:nth-child(2) .impact-orbit-particles span:nth-child(1) { top: 10%; left: 80%;  animation-delay: 0.5s; animation-duration: 6.5s; }
+.impact-orbit-card:nth-child(2) .impact-orbit-particles span:nth-child(2) { top: 80%; left: 15%;  animation-delay: 2.2s; animation-duration: 5s; }
+.impact-orbit-card:nth-child(2) .impact-orbit-particles span:nth-child(3) { top: 55%; left: 90%;  animation-delay: 3.8s; animation-duration: 7.5s; }
+.impact-orbit-card:nth-child(2) .impact-orbit-particles span:nth-child(4) { top: 25%; left: 5%;   animation-delay: 1.1s; animation-duration: 6s; }
+
+.impact-orbit-card:nth-child(3) .impact-orbit-particles span { background: #22c55e; }
+.impact-orbit-card:nth-child(3) .impact-orbit-particles span:nth-child(1) { top: 20%; left: 88%;  animation-delay: 0.8s; animation-duration: 6s; }
+.impact-orbit-card:nth-child(3) .impact-orbit-particles span:nth-child(2) { top: 75%; left: 12%;  animation-delay: 2.5s; animation-duration: 5.5s; }
+.impact-orbit-card:nth-child(3) .impact-orbit-particles span:nth-child(3) { top: 45%; left: 5%;   animation-delay: 4s;   animation-duration: 7s; }
+
+@keyframes orbitFloat {
+  0%   { opacity: 0; transform: translateY(0) scale(0.5); }
+  20%  { opacity: 0.8; }
+  80%  { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-60px) scale(1.4); }
+}
+
+/* ─ Counter Text ─ */
+.impact-orbit-content { z-index: 2; }
+
+.impact-count {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.impact-orbit-hero .impact-count {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+}
+
+.impact-count-static {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #fff 30%, #22c55e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.impact-label {
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+  color: var(--text-secondary);
+  font-weight: 500;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.impact-orbit-hero .impact-label {
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.border-top { border-top: 1px solid var(--border); }
+.pt-0 { padding-top: 0 !important; }
+
+/* ── RESPONSIVE ──────────────────────────────── */
+/* Mostly handled by auto-fit/minmax and clamps. Some specific tweaks: */
+@media (max-width: 600px) {
+  .proj-actions { flex-direction: column; width: 100%; }
+  .btn-live, .btn-details { width: 100%; justify-content: center; }
+  .tech-badge { width: 100%; justify-content: center; }
+}

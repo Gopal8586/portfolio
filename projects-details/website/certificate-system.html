@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../assets/images/favicon.ico" type="image/x-icon" />
+  <meta name="description" content="RunEthics Certificate System — Automated certificate generation and display platform. Full case study by Gopal Tiwari." />
+  <title>Certificate System | Case Study — Gopal Tiwari</title>
+
+  <link rel="stylesheet" href="../../assets/css/main.css" />
+  <link rel="stylesheet" href="../../assets/css/projects.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <style>
+    .cs-hero {
+      position: relative;
+      padding: 140px 0 80px;
+      overflow: hidden;
+    }
+    .cs-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% -10%, rgba(245,158,11,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cs-hero-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      font-weight: 500;
+    }
+    .cs-hero-breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .cs-hero-breadcrumb a:hover { color: var(--accent); }
+    .cs-hero-breadcrumb i { font-size: 0.65rem; }
+    .cs-hero-content { max-width: 760px; }
+    .cs-hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(245,158,11,0.25);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .cs-hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+    .cs-hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 620px;
+      margin-bottom: 36px;
+    }
+    .cs-hero-meta { display: flex; flex-wrap: wrap; gap: 24px; }
+    .cs-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .cs-meta-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-muted);
+    }
+    .cs-meta-value { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+    .cs-meta-value a { color: var(--accent); text-decoration: none; }
+    .cs-meta-value a:hover { text-decoration: underline; }
+    .cs-hero-img {
+      width: 100%;
+      margin-top: 56px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    .cs-hero-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      border: 1px solid rgba(245,158,11,0.2);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .cs-hero-img img { width: 100%; display: block; }
+    .cs-body { padding: 80px 0 100px; }
+    .cs-body-inner {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 56px;
+      align-items: start;
+    }
+    .cs-main { min-width: 0; }
+    .cs-block { margin-bottom: 56px; }
+    .cs-block-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .cs-block-tag i { font-size: 0.75rem; }
+    .cs-block h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .cs-block p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+    .cs-block p:last-child { margin-bottom: 0; }
+    .cs-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin-bottom: 56px;
+      opacity: 0.25;
+    }
+    .cs-role-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+    .cs-role-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .cs-role-pill i { color: var(--accent); font-size: 0.78rem; }
+    .cs-role-pill:hover { border-color: var(--accent); background: var(--accent-dim); }
+    .cs-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cs-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .cs-features li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .cs-callout {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 16px 16px 0;
+      padding: 28px 32px;
+      margin-top: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-callout::before {
+      content: '\f0eb';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      right: 24px;
+      top: 20px;
+      font-size: 3rem;
+      color: var(--accent);
+      opacity: 0.07;
+    }
+    .cs-callout p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin: 0;
+    }
+    .cs-outcome {
+      background: linear-gradient(135deg, rgba(245,158,11,0.08) 0%, rgba(245,158,11,0.02) 100%);
+      border: 1px solid rgba(245,158,11,0.2);
+      border-radius: 20px;
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-outcome::after {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 70%);
+    }
+    .cs-outcome p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .cs-outcome .outcome-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+    .cs-sidebar { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 20px; }
+    .cs-sidebar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: border-color 0.3s;
+    }
+    .cs-sidebar-card:hover { border-color: rgba(245,158,11,0.3); }
+    .cs-sidebar-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cs-tech-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .cs-tech-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .cs-tech-chip:hover { border-color: var(--accent); background: var(--accent-dim); }
+    .cs-tech-chip i { color: var(--accent); font-size: 0.65rem; }
+    .cs-live-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: #000;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 8px 24px rgba(245,158,11,0.25);
+    }
+    .cs-live-btn:hover { background: #d97706; transform: translateY(-3px); box-shadow: 0 12px 32px rgba(245,158,11,0.4); }
+    .cs-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: color 0.3s, border-color 0.3s;
+      width: 100%;
+      justify-content: center;
+    }
+    .cs-back-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .cs-stat-mini { display: flex; flex-direction: column; gap: 4px; }
+    .cs-stat-mini-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+    .cs-stat-mini-row:last-child { border-bottom: none; }
+    .cs-stat-mini-row .label { color: var(--text-muted); font-weight: 500; }
+    .cs-stat-mini-row .val { color: var(--text-primary); font-weight: 700; }
+    @media (max-width: 900px) {
+      .cs-body-inner { grid-template-columns: 1fr; }
+      .cs-sidebar { position: static; }
+      .cs-hero h1 { font-size: 2.2rem; }
+    }
+    @media (max-width: 600px) {
+      .cs-hero { padding: 110px 0 60px; }
+      .cs-callout { padding: 20px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+  <div class="scroll-bar-wrap"><div class="scroll-bar"></div></div>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../../index.html" class="nav-logo">
+        <img src="../../assets/images/icons/logo_1.png" alt="Gopal Tiwari Logo" />
+        <div class="nav-logo-divider"></div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Gopal Tiwari</span>
+          <span class="nav-logo-tagline">Web Developer &nbsp;|&nbsp; Graphic Designer &nbsp;|&nbsp; Tech Enthusiast</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../../index.html"    class="nav-link">Home</a></li>
+        <li><a href="../../about.html"    class="nav-link">About</a></li>
+        <li><a href="../../projects.html" class="nav-link active">Projects</a></li>
+        <li><a href="../../contact.html"  class="nav-link">Contact</a></li>
+      </ul>
+      <a href="../../contact.html" class="nav-cta">Hire Me</a>
+      <button class="nav-toggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+        <div class="mobile-nav">
+    <button class="mobile-close" aria-label="Close menu">&times;</button>
+    <div class="mobile-nav-profile">
+      <img src="assets/images/home/home-about.png" alt="Gopal Tiwari" class="mobile-profile-img">
+      <h3>Gopal Tiwari</h3>
+      <p>WEB DEVELOPER & DESIGNER</p>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="nav-link"><span class="nav-icon"><i class="fa-solid fa-house"></i></span> <span class="nav-text">Home</span></a>
+      <a href="about.html" class="nav-link"><span class="nav-icon"><i class="fa-solid fa-user"></i></span> <span class="nav-text">About</span></a>
+      <a href="projects.html" class="nav-link"><span class="nav-icon"><i class="fa-solid fa-briefcase"></i></span> <span class="nav-text">Projects</span></a>
+      <a href="services.html" class="nav-link"><span class="nav-icon"><i class="fa-solid fa-layer-group"></i></span> <span class="nav-text">Services</span></a>
+      <a href="contact.html" class="nav-link"><span class="nav-icon"><i class="fa-solid fa-envelope"></i></span> <span class="nav-text">Contact</span></a>
+      <a href="contact.html" class="nav-cta"><i class="fa-solid fa-paper-plane"></i> HIRE ME</a>
+    </div>
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <div class="cs-hero">
+    <div class="container">
+
+      <div class="cs-hero-breadcrumb reveal">
+        <a href="../../index.html">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <a href="../../projects.html">Projects</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span>RunEthics Certificate System</span>
+      </div>
+
+      <div class="cs-hero-content">
+        <div class="cs-hero-tag reveal">
+          <i class="fa-solid fa-file-code"></i> Case Study
+        </div>
+        <h1 class="reveal">Certificate <span class="accent">System</span></h1>
+        <p class="cs-hero-sub reveal">
+          A specialized subdomain-based platform designed for certificate generation and display, streamlining the process of verifying and accessing participation records. Powered by Node.js, Express, and modern frontend technologies.
+        </p>
+        <div class="cs-hero-meta reveal">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Category</span>
+            <span class="cs-meta-value">Web Application</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Year</span>
+            <span class="cs-meta-value">2024</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-value">Full Stack Developer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Live</span>
+            <span class="cs-meta-value"><a href="https://certificates.runethics.com/" target="_blank">certificates.runethics.com <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.7rem"></i></a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-hero-img reveal">
+        <img src="../../assets/images/projects/website/certificate.png" alt="Certificate System Website" />
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ BODY ══ -->
+  <section class="cs-body">
+    <div class="container">
+      <div class="cs-body-inner">
+
+        <!-- ── MAIN CONTENT ── -->
+        <div class="cs-main">
+
+          <!-- Overview -->
+          <div class="cs-block reveal">
+            <span class="cs-block-tag"><i class="fa-solid fa-circle-info"></i> Technology Stack & Project Inventory</span>
+            <h2>Comprehensive Architecture</h2>
+            <p>
+              This document provides a comprehensive inventory of all technologies, languages, frameworks, libraries, and tools used in the RunEthics Certificate project.
+            </p>
+            <p>
+              The system utilizes a modern technology stack separated into a responsive, accessible frontend and a scalable Node.js backend. It seamlessly handles data display while routing automated emails via a custom SMTP configuration.
+            </p>
+          </div>
+
+          <div class="cs-divider"></div>
+
+          <!-- Frontend Technologies -->
+          <div class="cs-block reveal">
+            <span class="cs-block-tag"><i class="fa-solid fa-desktop"></i> Frontend Stack</span>
+            <h2>Frontend Technologies</h2>
+            <div class="cs-role-pills">
+              <span class="cs-role-pill"><i class="fa-brands fa-html5"></i> HTML5</span>
+              <span class="cs-role-pill"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+              <span class="cs-role-pill"><i class="fa-brands fa-js"></i> Vanilla JS</span>
+              <span class="cs-role-pill"><i class="fa-brands fa-bootstrap"></i> Bootstrap 5.3.3</span>
+              <span class="cs-role-pill"><i class="fa-solid fa-icons"></i> Lucide Icons</span>
+            </div>
+            <p style="margin-top:18px;">
+              The core structure relies on semantic HTML5 and vanilla JavaScript (<code>main.js</code>) for DOM manipulation and client-side logic. Bootstrap 5.3.3 was integrated via CDN for responsive grids and basic UI components, while Lucide Icons provide a clean visual language.
+            </p>
+            <p>
+              <strong>Custom Styling Architecture:</strong> The project implements modular CSS files including <code>style.css</code> (Global styles), <code>index.css</code> (Home page specific styles), <code>about.css</code>, <code>contact.css</code>, <code>services.css</code>, and <code>enhancements.css</code> (for UI enhancements and animations).
+            </p>
+          </div>
+
+          <div class="cs-divider"></div>
+
+          <!-- Backend Technologies -->
+          <div class="cs-block reveal">
+            <span class="cs-block-tag"><i class="fa-solid fa-server"></i> Backend Stack</span>
+            <h2>Backend & Infrastructure</h2>
+            <div class="cs-role-pills">
+              <span class="cs-role-pill"><i class="fa-brands fa-node-js"></i> Node.js</span>
+              <span class="cs-role-pill"><i class="fa-solid fa-route"></i> Express.js v5.2.1</span>
+              <span class="cs-role-pill"><i class="fa-solid fa-envelope"></i> Nodemailer v8.0.3</span>
+              <span class="cs-role-pill"><i class="fa-brands fa-npm"></i> npm</span>
+              <span class="cs-role-pill"><i class="fa-brands fa-python"></i> Python Scripts</span>
+            </div>
+            <p style="margin-top:18px;">
+              The core environment is built on Node.js utilizing Express.js (v5.2.1) for routing and static file serving (<code>server.js</code>). Middleware includes CORS (v2.8.6), <code>express.json()</code>, and <code>express.urlencoded()</code> for robust request parsing.
+            </p>
+            <p>
+              <strong>Email Communications:</strong> Nodemailer is securely configured for DirectAdmin SMTP (<code>mail.runethics.com</code>) to handle form submissions and send dynamic auto-replies.
+            </p>
+            <p>
+              <strong>Maintenance Scripts:</strong> A suite of Python utilities (<code>analyze_classes.py</code>, <code>analyze_classes2.py</code>, <code>extract_utilities.py</code>, <code>find_combos.py</code>) are used for CSS class analysis, extraction, and automated project maintenance.
+            </p>
+          </div>
+
+          <div class="cs-divider"></div>
+
+          <!-- Key Features -->
+          <div class="cs-block reveal">
+            <span class="cs-block-tag"><i class="fa-solid fa-star"></i> Implementation</span>
+            <h2>Key Features Implemented</h2>
+            <ul class="cs-features">
+              <li>Dynamic SMTP email routing with reliable auto-reply functionality using Nodemailer.</li>
+              <li>Responsive design tailored for various devices using a hybrid of Bootstrap grid and custom CSS flexbox/grid.</li>
+              <li>Custom cursor effects and sophisticated UI micro-interactions (e.g., cursor glow, floating tags, scrolling animations).</li>
+              <li>Static Asset Serving directly through Express backend for seamless delivery.</li>
+              <li>Accessible and inclusive user interface focusing on document legibility.</li>
+            </ul>
+          </div>
+
+          <div class="cs-divider"></div>
+
+          <!-- Outcome -->
+          <div class="cs-block reveal">
+            <span class="cs-block-tag"><i class="fa-solid fa-trophy"></i> Outcome</span>
+            <h2>The Result</h2>
+            <div class="cs-outcome">
+              <span class="outcome-icon">🏆</span>
+              <p>
+                The final platform delivers an automated, accessible way to showcase participant certificates. By offloading manual distribution to a robust web portal, users can effortlessly find, view, and interact with their achievements on any device.
+              </p>
+              <br/>
+              <p>
+                This project exemplifies a well-architected full-stack solution, combining elegant UI micro-interactions with a solid Express.js backend for reliable communication and static file delivery.
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+        <!-- ── SIDEBAR ── -->
+        <aside class="cs-sidebar">
+
+          <!-- Live link -->
+          <div class="cs-sidebar-card reveal">
+            <div class="cs-sidebar-title">Live Website</div>
+            <a href="https://certificates.runethics.com/" target="_blank" class="cs-live-btn">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site
+            </a>
+          </div>
+
+          <!-- Project info -->
+          <div class="cs-sidebar-card reveal">
+            <div class="cs-sidebar-title">Project Info</div>
+            <div class="cs-stat-mini">
+              <div class="cs-stat-mini-row">
+               <span class="label">Type</span>
+                <span class="val">Web Application</span>
+              </div>
+              <div class="cs-stat-mini-row">
+                <span class="label">Year</span>
+                <span class="val">2024</span>
+              </div>
+              <div class="cs-stat-mini-row">
+                <span class="label">Framework</span>
+                <span class="val">Express.js</span>
+              </div>
+              <div class="cs-stat-mini-row">
+                <span class="label">Status</span>
+                <span class="val" style="color:var(--accent)">● Live</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tech stack -->
+          <div class="cs-sidebar-card reveal">
+            <div class="cs-sidebar-title">Technologies Used</div>
+            <div class="cs-tech-chips">
+              <span class="cs-tech-chip"><i class="fa-brands fa-html5"></i> HTML5</span>
+              <span class="cs-tech-chip"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+              <span class="cs-tech-chip"><i class="fa-brands fa-js"></i> Vanilla JS</span>
+              <span class="cs-tech-chip"><i class="fa-brands fa-bootstrap"></i> Bootstrap 5.3</span>
+              <span class="cs-tech-chip"><i class="fa-brands fa-node-js"></i> Node.js</span>
+              <span class="cs-tech-chip"><i class="fa-solid fa-route"></i> Express.js</span>
+              <span class="cs-tech-chip"><i class="fa-solid fa-envelope"></i> Nodemailer</span>
+              <span class="cs-tech-chip"><i class="fa-brands fa-npm"></i> npm</span>
+              <span class="cs-tech-chip"><i class="fa-brands fa-python"></i> Python</span>
+            </div>
+          </div>
+
+          <!-- Back button -->
+          <a href="../../projects.html" class="cs-back-btn reveal">
+            <i class="fa-solid fa-arrow-left"></i> Back to Projects
+          </a>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="nav-logo"><img src="../../assets/images/icons/logo_1.png" alt="GT" /></span>
+          <p>Dedicated to delivering exceptional digital experiences through innovative web development, strategic UI/UX design, and impactful visual communication. By combining creativity and technical expertise, I build solutions that strengthen brands and drive meaningful business growth. Committed to excellence, professionalism, and continuous innovation.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../about.html">About</a></li>
+            <li><a href="../../projects.html">Projects</a></li>
+            <li><a href="../../contact.html">Contact</a></li>
+          </ul>
+        </div>
+                <div class="footer-col footer-contact-col">
+          <h4>Contact & Socials</h4>
+          <ul class="footer-contact-info">
+            <li><a href="tel:+918586084775"><i class="fa-solid fa-phone"></i> +91 85860 84775</a></li>
+            <li><a href="mailto:gopalharsh8586@gmail.com"><i class="fa-solid fa-envelope"></i> gopalharsh8586@gmail.com</a></li>
+            <li><i class="fa-solid fa-location-dot"></i> Delhi, India</li>
+          </ul>
+          <div class="footer-social" style="margin-top: 24px;">
+            <a href="https://github.com/Gopal8586#" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/gopaltiwari85" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/gopal_tiwari2012/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2024 Gopal Tiwari. All rights reserved.</span>
+        <span>Designed &amp; Built by <span class="accent">Gopal Tiwari</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>
+
+
+
+
+

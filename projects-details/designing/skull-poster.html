@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../assets/images/favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Día de los Muertos – Illustrator Artwork Definition by Gopal Tiwari." />
+  <title>Día de los Muertos | Case Study — Gopal Tiwari</title>
+
+  <link rel="stylesheet" href="../../assets/css/main.css" />
+  <link rel="stylesheet" href="../../assets/css/projects.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <style>
+    /* Custom Theme for Día de los Muertos Artwork */
+    :root {
+      --art-accent-1: #ec4899; /* Pink */
+      --art-accent-2: #8b5cf6; /* Purple */
+      --art-accent-3: #f59e0b; /* Amber */
+    }
+
+    .cs-hero {
+      position: relative;
+      padding: 160px 0 100px;
+      overflow: hidden;
+    }
+    .cs-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.1) 40%, transparent 80%);
+      pointer-events: none;
+    }
+    .cs-hero::after {
+      content: '';
+      position: absolute;
+      top: 10%; right: 10%;
+      width: 400px; height: 400px;
+      background: var(--art-accent-2);
+      filter: blur(150px);
+      opacity: 0.1;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .cs-hero-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .cs-hero-breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+    .cs-hero-breadcrumb a:hover { color: var(--art-accent-1); }
+    .cs-hero-breadcrumb i { font-size: 0.65rem; }
+
+    .cs-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .cs-hero-content { text-align: left; margin: 0; }
+    
+    .cs-hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(236, 72, 153, 0.1);
+      color: var(--art-accent-1);
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.1);
+    }
+    
+    .cs-hero h1 {
+      font-size: clamp(2.8rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    .cs-hero h1 .accent-gradient {
+      background: linear-gradient(135deg, var(--art-accent-1), var(--art-accent-2), var(--art-accent-3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      display: inline-block;
+    }
+    
+    .cs-hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin: 0 0 20px;
+    }
+
+    .cs-hero-img {
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 40px rgba(236, 72, 153, 0.15);
+      position: relative;
+      transform: translateY(0);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+    .cs-hero-img:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 50px 120px rgba(0,0,0,0.8), 0 0 60px rgba(139, 92, 246, 0.25);
+    }
+    .cs-hero-img img { width: 100%; display: block; }
+    
+    /* Body & Layout */
+    .cs-body { padding: 80px 0 120px; }
+    .cs-body-inner {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 60px;
+      align-items: start;
+    }
+    .cs-main { min-width: 0; }
+    
+    /* Blocks */
+    .cs-block { margin-bottom: 60px; }
+    .cs-block-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, var(--art-accent-1), var(--art-accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      margin-bottom: 16px;
+    }
+    .cs-block-tag i { font-size: 0.85rem; color: var(--art-accent-1); }
+    .cs-block h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+    .cs-block p {
+      font-size: 1rem;
+      color: #94a3b8;
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .cs-block p:last-child { margin-bottom: 0; }
+    
+    .cs-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.3), transparent);
+      margin: 60px 0;
+    }
+
+    /* Process Cards */
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .process-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .process-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--art-accent-1), var(--art-accent-2));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .process-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(236, 72, 153, 0.2);
+      transform: translateY(-5px);
+    }
+    .process-card:hover::before { opacity: 1; }
+    .process-num {
+      font-size: 2rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.05);
+      position: absolute;
+      top: 10px; right: 15px;
+    }
+    .process-card h3 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .process-card p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* Tools Pill */
+    .cs-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .tool-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: rgba(139, 92, 246, 0.05);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      transition: all 0.3s ease;
+    }
+    .tool-pill i { color: var(--art-accent-2); }
+    .tool-pill:hover {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: var(--art-accent-2);
+      transform: translateY(-2px);
+    }
+
+    /* Callout Box */
+    .cs-callout-glass {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 32px 40px;
+      margin-top: 24px;
+      position: relative;
+    }
+    .cs-callout-glass::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0; width: 4px;
+      background: linear-gradient(180deg, var(--art-accent-1), var(--art-accent-3));
+      border-radius: 20px 0 0 20px;
+    }
+    .cs-callout-glass p { margin-bottom: 16px; }
+    .cs-callout-glass p:last-child { margin-bottom: 0; }
+
+    /* Features List */
+    .cs-features-art {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cs-features-art li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: 1rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.01);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .cs-features-art li i {
+      color: var(--art-accent-1);
+      font-size: 1.2rem;
+      margin-top: 2px;
+      background: rgba(236, 72, 153, 0.1);
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    /* Sidebar */
+    .cs-sidebar { position: sticky; top: 120px; display: flex; flex-direction: column; gap: 24px; }
+    .cs-sidebar-card {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 28px;
+      transition: all 0.4s ease;
+    }
+    .cs-sidebar-card:hover { border-color: rgba(139, 92, 246, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .cs-sidebar-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #64748b;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .cs-stat-mini { display: flex; flex-direction: column; gap: 0; }
+    .cs-stat-mini-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.05);
+      font-size: 0.9rem;
+    }
+    .cs-stat-mini-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .cs-stat-mini-row .label { color: #64748b; font-weight: 600; }
+    .cs-stat-mini-row .val { color: #e2e8f0; font-weight: 700; }
+    
+    .tech-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tech-badge {
+      padding: 6px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tech-badge img { width: 14px; height: 14px; }
+
+    .cs-back-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    .cs-back-btn:hover { 
+      color: #fff; 
+      border-color: rgba(255,255,255,0.15); 
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 992px) {
+      .cs-body-inner { grid-template-columns: 1fr; gap: 40px; }
+      .cs-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cs-sidebar { position: static; }
+      .process-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .cs-hero { padding: 120px 0 60px; }
+      .cs-block { margin-bottom: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+  <div class="scroll-bar-wrap"><div class="scroll-bar"></div></div>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../../index.html" class="nav-logo">
+        <img src="../../assets/images/icons/logo_1.png" alt="Gopal Tiwari Logo" />
+        <div class="nav-logo-divider"></div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Gopal Tiwari</span>
+          <span class="nav-logo-tagline">Web Developer &nbsp;|&nbsp; Graphic Designer &nbsp;|&nbsp; Tech Enthusiast</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../../index.html"    class="nav-link">Home</a></li>
+        <li><a href="../../about.html"    class="nav-link">About</a></li>
+        <li><a href="../../projects.html" class="nav-link active">Projects</a></li>
+        <li><a href="../../contact.html"  class="nav-link">Contact</a></li>
+      </ul>
+      <a href="../../contact.html" class="nav-cta">Hire Me</a>
+      <button class="nav-toggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+        <div class="mobile-nav">
+    <button class="mobile-close" aria-label="Close menu">&times;</button>
+    <div class="mobile-nav-profile">
+      <img src="assets/images/home/home-about.png" alt="Gopal Tiwari" class="mobile-profile-img">
+      <h3>Gopal Tiwari</h3>
+      <p>WEB DEVELOPER & DESIGNER</p>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="nav-link"><span class="nav-icon"><i class="fa-solid fa-house"></i></span> <span class="nav-text">Home</span></a>
+      <a href="about.html" class="nav-link"><span class="nav-icon"><i class="fa-solid fa-user"></i></span> <span class="nav-text">About</span></a>
+      <a href="projects.html" class="nav-link"><span class="nav-icon"><i class="fa-solid fa-briefcase"></i></span> <span class="nav-text">Projects</span></a>
+      <a href="services.html" class="nav-link"><span class="nav-icon"><i class="fa-solid fa-layer-group"></i></span> <span class="nav-text">Services</span></a>
+      <a href="contact.html" class="nav-link"><span class="nav-icon"><i class="fa-solid fa-envelope"></i></span> <span class="nav-text">Contact</span></a>
+      <a href="contact.html" class="nav-cta"><i class="fa-solid fa-paper-plane"></i> HIRE ME</a>
+    </div>
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <div class="cs-hero">
+    <div class="container">
+
+      <div class="cs-hero-breadcrumb reveal">
+        <a href="../../index.html">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <a href="../../projects.html">Projects</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span>Día de los Muertos</span>
+      </div>
+
+      <div class="cs-hero-grid">
+        <div class="cs-hero-content">
+          <div class="cs-hero-tag reveal">
+            <i class="fa-solid fa-palette"></i> Illustrator Artwork
+          </div>
+          <h1 class="reveal">Día de los <span class="accent-gradient">Muertos</span></h1>
+          <p class="cs-hero-sub reveal">
+            A colorful, highly detailed vector illustration inspired by the traditional Mexican celebration, reflecting remembrance, emotions, culture, and the connection between life and death.
+          </p>
+        </div>
+
+        <div class="cs-hero-img reveal">
+          <!-- Assuming the image is named skull-poster.png based on previous code -->
+          <img src="../../assets/images/projects/designing/skull-poster.png" alt="Día de los Muertos Skull Artwork" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ BODY ══ -->
+  <section class="cs-body">
+    <div class="container">
+      <div class="cs-body-inner">
+
+        <!-- ── MAIN CONTENT ── -->
+        <div class="cs-main">
+
+          <!-- Introduction -->
+          <div class="cs-block reveal">
+            <span class="cs-block-tag"><i class="fa-solid fa-circle-info"></i> Introduction</span>
+            <h2>About the Artwork</h2>
+            <p>
+              This artwork is inspired by the traditional Mexican celebration “Día de los Muertos” (Day of the Dead), which represents remembrance, emotions, culture, and the connection between life and death.
+            </p>
+            <p>
+              The colorful skull design symbolizes that death is not always represented by darkness or fear — it can also celebrate memories, love, and identity through art and creativity. This portrait reflects my interest in detailed vector illustration and demonstrates my ability to create complex designs using precision, patience, and creativity.
+            </p>
+          </div>
+
+          <!-- Objective -->
+          <div class="cs-block reveal">
+            <span class="cs-block-tag"><i class="fa-solid fa-bullseye"></i> Objective</span>
+            <h2>The Purpose</h2>
+            <p>
+              The main purpose of creating this illustration was to improve and showcase my vector design skills in Adobe Illustrator, especially my understanding of the Pen Tool, shape building, line control, symmetry, and color balancing.
+            </p>
+            <p>The artwork was specifically designed to:</p>
+            <ul class="cs-features-art" style="margin-top: 20px;">
+              <li><i class="fa-solid fa-check"></i> <div><strong>Explore Detailed Techniques</strong><br/>Dive deep into complex vector illustration methods.</div></li>
+              <li><i class="fa-solid fa-check"></i> <div><strong>Master the Pen Tool</strong><br/>Practice professional handling of vector paths and anchor points.</div></li>
+              <li><i class="fa-solid fa-check"></i> <div><strong>Perfect Manual Curves</strong><br/>Create clean, smooth curves entirely by hand without relying on auto-trace.</div></li>
+              <li><i class="fa-solid fa-check"></i> <div><strong>Build Composition</strong><br/>Construct a balanced composition filled with intricate decorative elements.</div></li>
+              <li><i class="fa-solid fa-check"></i> <div><strong>Color Psychology</strong><br/>Understand how colors can create emotion and visual attraction.</div></li>
+            </ul>
+          </div>
+
+          <div class="cs-divider"></div>
+
+          <!-- Importance of the Pen Tool -->
+          <div class="cs-block reveal">
+            <span class="cs-block-tag"><i class="fa-solid fa-pen-nib"></i> Technique</span>
+            <h2>Importance of the Pen Tool</h2>
+            <div class="cs-callout-glass">
+              <p>
+                One of the biggest highlights of this artwork is that <strong>almost every single line, curve, and decorative shape was manually created using the Pen Tool</strong>.
+              </p>
+              <p>
+                The Pen Tool is considered one of the most important and difficult tools inside Adobe Illustrator because it requires patience, hand control, and technical understanding.
+              </p>
+            </div>
+            <p style="margin-top: 20px;">Working extensively with the Pen Tool on this artwork helped me gain:</p>
+            <div class="cs-tools">
+              <span class="tool-pill"><i class="fa-solid fa-anchor"></i> Better Anchor Point Control</span>
+              <span class="tool-pill"><i class="fa-solid fa-route"></i> Strong Vector Path Understanding</span>
+              <span class="tool-pill"><i class="fa-solid fa-scale-balanced"></i> Precision in Symmetry</span>
+              <span class="tool-pill"><i class="fa-solid fa-gem"></i> Complex Detailing Confidence</span>
+            </div>
+          </div>
+
+          <div class="cs-divider"></div>
+
+          <!-- Process & Challenges -->
+          <div class="cs-block reveal">
+            <span class="cs-block-tag"><i class="fa-solid fa-mountain-sun"></i> Journey</span>
+            <h2>Design Process & Challenges</h2>
+            <p>For a beginner-level Illustrator project, this artwork represented a high level of effort. The design demanded patience, accuracy, and consistent symmetry.</p>
+            
+            <div class="process-grid">
+              <div class="process-card">
+                <span class="process-num">01</span>
+                <h3>Creating the Skull Structure</h3>
+                <p>The first challenge was designing a perfectly balanced skull shape. Maintaining equal spacing and proportions on both sides required careful alignment and constant adjustments to ensure perfect symmetry.</p>
+              </div>
+              
+              <div class="process-card">
+                <span class="process-num">02</span>
+                <h3>Decorative Detailing</h3>
+                <p>The floral patterns, hearts, dots, and ornaments were all manually designed. Small details demanded extreme precision because even a slight curve imbalance could ruin the overall aesthetic.</p>
+              </div>
+              
+              <div class="process-card">
+                <span class="process-num">03</span>
+                <h3>Color Combination</h3>
+                <p>Choosing vibrant colors without making the design visually overwhelming was difficult. Bright yellow, pink, purple, blue, green, and black were balanced carefully to create a festive, energetic visual style.</p>
+              </div>
+              
+              <div class="process-card">
+                <span class="process-num">04</span>
+                <h3>Precision with the Pen Tool</h3>
+                <p>Controlling curves and smooth lines was difficult initially. Managing anchor points, handles, and curve flow naturally took time, patience, and multiple corrections to get right.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-divider"></div>
+
+          <!-- Meaning & Conclusion -->
+          <div class="cs-block reveal">
+            <span class="cs-block-tag"><i class="fa-solid fa-heart"></i> Reflection</span>
+            <h2>Meaning & Conclusion</h2>
+            <p>
+              This artwork is inspired by the traditional “Día de los Muertos” design style and was created as my first practice artwork in Adobe Illustrator. Although the concept already exists in art culture, this project became an important part of my learning journey.
+            </p>
+            <p>
+              It represents the starting point of my design journey and my first serious experience working deeply with vector paths. Working on this taught me patience, detailing, color balance, and clean line creation.
+            </p>
+            <div class="cs-callout-glass" style="margin-top: 24px;">
+              <p style="font-weight: 600; color: #fff; font-size: 1.1rem; margin-bottom: 12px;">Conclusion</p>
+              <p>
+                This is not just a digital illustration — it represents my learning process, creativity, patience, and technical growth as a designer. As my first Illustrator artwork, it challenged me to work with precision and detail while exploring the full potential of vector art. Every line and shape reflects the effort and dedication required to master professional design tools from scratch.
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+        <!-- ── SIDEBAR ── -->
+        <aside class="cs-sidebar">
+
+          <!-- Project info -->
+          <div class="cs-sidebar-card reveal">
+            <div class="cs-sidebar-title">Project Details</div>
+            <div class="cs-stat-mini">
+              <div class="cs-stat-mini-row">
+                <span class="label">Project Type</span>
+                <span class="val">Vector Illustration</span>
+              </div>
+              <div class="cs-stat-mini-row">
+                <span class="label">Difficulty</span>
+                <span class="val" style="color:var(--art-accent-1)">Advanced / High Detail</span>
+              </div>
+              <div class="cs-stat-mini-row">
+                <span class="label">Style</span>
+                <span class="val">Día de los Muertos</span>
+              </div>
+              <div class="cs-stat-mini-row">
+                <span class="label">Status</span>
+                <span class="val" style="color:#10b981">● Completed</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Software used -->
+          <div class="cs-sidebar-card reveal">
+            <div class="cs-sidebar-title">Software Used</div>
+            <div class="tech-badges">
+              <div class="tech-badge">
+                <i class="fa-solid fa-bezier-curve" style="color:#ff9a00"></i> Adobe Illustrator
+              </div>
+              <div class="tech-badge">
+                <i class="fa-solid fa-image" style="color:#31a8ff"></i> Adobe Photoshop
+              </div>
+            </div>
+            
+            <div class="cs-sidebar-title" style="margin-top: 24px;">Illustrator Tools</div>
+            <div class="tech-badges">
+              <span class="tech-badge">Pen Tool</span>
+              <span class="tech-badge">Shape Builder</span>
+              <span class="tech-badge">Pathfinder</span>
+              <span class="tech-badge">Direct Selection</span>
+              <span class="tech-badge">Stroke & Fill</span>
+              <span class="tech-badge">Layer Management</span>
+            </div>
+          </div>
+          
+          <!-- Learning Outcome -->
+          <div class="cs-sidebar-card reveal">
+            <div class="cs-sidebar-title">Learning Outcome</div>
+            <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+              <li style="font-size:0.85rem; color:#cbd5e1; display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--art-accent-2); font-size:0.7rem;"></i> Vector illustration skills</li>
+              <li style="font-size:0.85rem; color:#cbd5e1; display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--art-accent-2); font-size:0.7rem;"></i> Pen Tool expertise</li>
+              <li style="font-size:0.85rem; color:#cbd5e1; display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--art-accent-2); font-size:0.7rem;"></i> Shape accuracy</li>
+              <li style="font-size:0.85rem; color:#cbd5e1; display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--art-accent-2); font-size:0.7rem;"></i> Color harmony</li>
+              <li style="font-size:0.85rem; color:#cbd5e1; display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--art-accent-2); font-size:0.7rem;"></i> Attention to detail</li>
+            </ul>
+          </div>
+
+          <!-- Back button -->
+          <a href="../../projects.html" class="cs-back-btn reveal">
+            <i class="fa-solid fa-arrow-left"></i> Back to Projects
+          </a>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="nav-logo"><img src="../../assets/images/icons/logo_1.png" alt="GT" /></span>
+          <p>Dedicated to delivering exceptional digital experiences through innovative web development, strategic UI/UX design, and impactful visual communication. By combining creativity and technical expertise, I build solutions that strengthen brands and drive meaningful business growth. Committed to excellence, professionalism, and continuous innovation.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../about.html">About</a></li>
+            <li><a href="../../projects.html">Projects</a></li>
+            <li><a href="../../contact.html">Contact</a></li>
+          </ul>
+        </div>
+                <div class="footer-col footer-contact-col">
+          <h4>Contact & Socials</h4>
+          <ul class="footer-contact-info">
+            <li><a href="tel:+918586084775"><i class="fa-solid fa-phone"></i> +91 85860 84775</a></li>
+            <li><a href="mailto:gopalharsh8586@gmail.com"><i class="fa-solid fa-envelope"></i> gopalharsh8586@gmail.com</a></li>
+            <li><i class="fa-solid fa-location-dot"></i> Delhi, India</li>
+          </ul>
+          <div class="footer-social" style="margin-top: 24px;">
+            <a href="https://github.com/Gopal8586#" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/gopaltiwari85" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/gopal_tiwari2012/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2024 Gopal Tiwari. All rights reserved.</span>
+        <span>Designed &amp; Built by <span class="accent" style="color: var(--art-accent-1)">Gopal Tiwari</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
