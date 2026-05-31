@@ -350,9 +350,9 @@ ul {
 
 /* Thin separator between logo icon and text */
 .nav-logo-divider {
-  width: 1px;
+  width: 1.5px;
   height: clamp(24px, 4vh, 36px);
-  background: var(--border);
+  background: rgba(255, 255, 255, 0.3);
   margin: 0 clamp(16px, 2vw, 24px);
   /* Increased spacing for all devices */
   flex-shrink: 0;
@@ -751,12 +751,13 @@ footer {
   .footer-grid {
     grid-template-columns: 1fr;
   }
+
   .nav-logo {
-    gap: 16px;
+    gap: 8px;
   }
 
   .nav-logo-name {
-    font-size: 2rem;
+    font-size: 1.3rem;
   }
 
   .nav-logo-tagline {
