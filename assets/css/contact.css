@@ -672,33 +672,75 @@
 
 .form-note i { color: var(--accent); }
 
-/* Success Message Styling */
-.success-message {
-  padding: 40px 20px;
-  animation: fadeInUp 0.6s ease forwards;
+/* Success Modal Styling */
+.success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.success-modal-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+  max-width: 450px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-modal:hover {
+  color: var(--text-primary);
 }
 
 .success-icon {
   font-size: 4rem;
   color: #10b981; /* bright green */
   margin-bottom: 20px;
-  animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-.success-message h3 {
+.success-modal-content h3 {
   font-size: 1.8rem;
   color: var(--text-primary);
   margin-bottom: 12px;
 }
 
-.success-message p {
+.success-modal-content p {
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.6;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes scaleIn {
-  from { transform: scale(0); opacity: 0; }
+  from { transform: scale(0.8); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
 

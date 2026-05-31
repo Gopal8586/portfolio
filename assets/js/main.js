@@ -238,17 +238,20 @@ if (contactForm && submitBtn) {
       });
 
       if (response.ok) {
-        document.getElementById('contact-form').style.display = 'none';
-        document.querySelector('.form-header').style.display = 'none';
-        const successMsg = document.getElementById('success-message');
-        successMsg.style.display = 'flex';
-        successMsg.style.flexDirection = 'column';
-        successMsg.style.alignItems = 'center';
-        successMsg.style.justifyContent = 'center';
-        successMsg.style.textAlign = 'center';
-        successMsg.style.padding = '40px 20px';
-        successMsg.style.animation = 'fadeInUp 0.6s ease forwards';
+        const successModal = document.getElementById('success-modal');
+        successModal.style.display = 'flex';
         contactForm.reset();
+        
+        // Add event listener to close modal
+        document.getElementById('close-success-modal').onclick = function() {
+          successModal.style.display = 'none';
+        };
+        // Close modal when clicking outside
+        successModal.onclick = function(e) {
+          if (e.target === successModal) {
+            successModal.style.display = 'none';
+          }
+        };
       } else {
         const errText = await response.text();
         alert('Error: ' + errText);
