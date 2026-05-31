@@ -350,9 +350,9 @@ ul {
 
 /* Thin separator between logo icon and text */
 .nav-logo-divider {
-  width: 1.5px;
+  width: 2px;
   height: clamp(24px, 4vh, 36px);
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.8);
   margin: 0 clamp(16px, 2vw, 24px);
   /* Increased spacing for all devices */
   flex-shrink: 0;
