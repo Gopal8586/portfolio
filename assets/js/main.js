@@ -221,7 +221,10 @@ if (contactForm && submitBtn) {
         email: document.getElementById('email').value,
         phone: document.getElementById('phone').value,
         budget: document.getElementById('budget').value,
-        message: document.getElementById('message').value
+        message: document.getElementById('message').value,
+        owner_email: 'gopalharsh8586@gmail.com',
+        owner_phone: '+91 85860 84775',
+        portfolio_url: window.location.origin
       }
     };
 
