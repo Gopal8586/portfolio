@@ -548,6 +548,9 @@ footer {
   .footer-grid {
     grid-template-columns: 1fr;
   }
+  .nav-logo-name {
+    font-size: 1.5rem;
+  }
   .nav-logo-tagline {
     display: none;
   }
@@ -567,7 +570,7 @@ footer {
 /* 320px: Small Mobile */
 @media (max-width: 320px) {
   .nav-logo-name {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 }
 
