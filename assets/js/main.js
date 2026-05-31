@@ -212,7 +212,7 @@ if (contactForm && submitBtn) {
     
     const formData = {
       service_id: 'service_i5iower',
-      template_id: 'template_7e4vl1q',
+      template_id: 'template_3jqrrvd',
       user_id: 'Mrur3_m6zuAb09Qfw',
       template_params: {
         subject: "Portfolio Contact: " + document.getElementById('subject').value,
