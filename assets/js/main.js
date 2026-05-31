@@ -211,27 +211,29 @@ if (contactForm && submitBtn) {
     const projectType = document.querySelector('input[name="project_type"]:checked')?.value || '';
     
     const formData = {
+      access_key: "1944bfb4-cc15-42c0-b9d3-04224ebd2b6d",
+      subject: "Portfolio Contact: " + document.getElementById('subject').value,
       project_type: projectType,
       name: document.getElementById('name').value,
       email: document.getElementById('email').value,
       phone: document.getElementById('phone').value,
       budget: document.getElementById('budget').value,
-      subject: document.getElementById('subject').value,
       message: document.getElementById('message').value
     };
 
     try {
-      const response = await fetch('send_mail.php', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify(formData)
       });
 
       const result = await response.json();
 
-      if (result.status === 'success') {
+      if (result.success) {
         alert('Thank you! Your message has been sent successfully.');
         contactForm.reset();
       } else {
