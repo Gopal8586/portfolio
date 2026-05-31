@@ -2,7 +2,7 @@
   "name": "gopal/portfolio",
   "description": "Portfolio website with PHP contact form",
   "require": {
-    "php": "^8.0",
+    "php": "^8.2",
     "ext-json": "*",
     "phpmailer/phpmailer": "^6.8"
   }
