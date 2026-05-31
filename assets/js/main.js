@@ -211,33 +211,35 @@ if (contactForm && submitBtn) {
     const service = document.querySelector('input[name="service"]:checked')?.value || '';
     
     const formData = {
-      access_key: "1944bfb4-cc15-42c0-b9d3-04224ebd2b6d",
-      subject: "Portfolio Contact: " + document.getElementById('subject').value,
-      service: service,
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      phone: document.getElementById('phone').value,
-      budget: document.getElementById('budget').value,
-      message: document.getElementById('message').value
+      service_id: 'service_xjioycj',
+      template_id: 'template_7e4vl1q',
+      user_id: 'Mrur3_m6zuAb09Qfw',
+      template_params: {
+        subject: "Portfolio Contact: " + document.getElementById('subject').value,
+        service: service,
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        budget: document.getElementById('budget').value,
+        message: document.getElementById('message').value
+      }
     };
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
       });
 
-      const result = await response.json();
-
-      if (result.success) {
+      if (response.ok) {
         alert('Thank you! Your message has been sent successfully.');
         contactForm.reset();
       } else {
-        alert('Error: ' + result.message);
+        const errText = await response.text();
+        alert('Error: ' + errText);
       }
     } catch (error) {
       alert('An error occurred while sending the message. Please try again later.');
