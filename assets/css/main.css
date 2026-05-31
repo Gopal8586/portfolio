@@ -751,7 +751,6 @@ footer {
   .footer-grid {
     grid-template-columns: 1fr;
   }
-
   .nav-logo {
     gap: 16px;
   }
