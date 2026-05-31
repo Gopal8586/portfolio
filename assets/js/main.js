@@ -238,7 +238,16 @@ if (contactForm && submitBtn) {
       });
 
       if (response.ok) {
-        alert('Thank you! Your message has been sent successfully.');
+        document.getElementById('contact-form').style.display = 'none';
+        document.querySelector('.form-header').style.display = 'none';
+        const successMsg = document.getElementById('success-message');
+        successMsg.style.display = 'flex';
+        successMsg.style.flexDirection = 'column';
+        successMsg.style.alignItems = 'center';
+        successMsg.style.justifyContent = 'center';
+        successMsg.style.textAlign = 'center';
+        successMsg.style.padding = '40px 20px';
+        successMsg.style.animation = 'fadeInUp 0.6s ease forwards';
         contactForm.reset();
       } else {
         const errText = await response.text();

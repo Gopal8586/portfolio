@@ -672,6 +672,36 @@
 
 .form-note i { color: var(--accent); }
 
+/* Success Message Styling */
+.success-message {
+  padding: 40px 20px;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.success-icon {
+  font-size: 4rem;
+  color: #10b981; /* bright green */
+  margin-bottom: 20px;
+  animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.success-message h3 {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.success-message p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
 /* ── RESPONSIVE OVERRIDES ──────────────────────────── */
 @media (max-width: 900px) {
   .contact-layout { flex-direction: column; }
