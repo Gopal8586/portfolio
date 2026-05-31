@@ -208,12 +208,12 @@ if (contactForm && submitBtn) {
     submitText.innerText = 'Sending...';
 
     // Gather form data
-    const projectType = document.querySelector('input[name="project_type"]:checked')?.value || '';
+    const service = document.querySelector('input[name="service"]:checked')?.value || '';
     
     const formData = {
       access_key: "1944bfb4-cc15-42c0-b9d3-04224ebd2b6d",
       subject: "Portfolio Contact: " + document.getElementById('subject').value,
-      project_type: projectType,
+      service: service,
       name: document.getElementById('name').value,
       email: document.getElementById('email').value,
       phone: document.getElementById('phone').value,

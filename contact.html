@@ -195,23 +195,23 @@
             <div class="form-section-label">What are you looking for?</div>
             <div class="project-type-selector">
               <label class="pt-option">
-                <input type="radio" name="project_type" value="website" />
+                <input type="radio" name="service" value="website" />
                 <span class="pt-chip"><i class="fa-solid fa-globe"></i> Website</span>
               </label>
               <label class="pt-option">
-                <input type="radio" name="project_type" value="design" />
+                <input type="radio" name="service" value="design" />
                 <span class="pt-chip"><i class="fa-solid fa-pen-nib"></i> Design</span>
               </label>
               <label class="pt-option">
-                <input type="radio" name="project_type" value="branding" />
+                <input type="radio" name="service" value="branding" />
                 <span class="pt-chip"><i class="fa-solid fa-fingerprint"></i> Branding</span>
               </label>
               <label class="pt-option">
-                <input type="radio" name="project_type" value="seo" />
+                <input type="radio" name="service" value="seo" />
                 <span class="pt-chip"><i class="fa-solid fa-chart-line"></i> SEO</span>
               </label>
               <label class="pt-option">
-                <input type="radio" name="project_type" value="other" />
+                <input type="radio" name="service" value="other" />
                 <span class="pt-chip"><i class="fa-solid fa-ellipsis"></i> Other</span>
               </label>
             </div>
@@ -223,14 +223,14 @@
                 <label for="name">Full Name <span class="req">*</span></label>
                 <div class="input-wrap">
                   <i class="fa-regular fa-user input-icon"></i>
-                  <input type="text" id="name" class="form-input" placeholder="Gopal Tiwari" required />
+                  <input type="text" id="name" name="name" class="form-input" placeholder="Gopal Tiwari" required />
                 </div>
               </div>
               <div class="form-group">
                 <label for="email">Email Address <span class="req">*</span></label>
                 <div class="input-wrap">
                   <i class="fa-regular fa-envelope input-icon"></i>
-                  <input type="email" id="email" class="form-input" placeholder="gopal.tiwari@gmail.com" required />
+                  <input type="email" id="email" name="email" class="form-input" placeholder="gopal.tiwari@gmail.com" required />
                 </div>
               </div>
             </div>
@@ -240,14 +240,14 @@
                 <label for="phone">Phone <span class="req">*</span></label>
                 <div class="input-wrap">
                   <i class="fa-solid fa-phone input-icon"></i>
-                  <input type="tel" id="phone" class="form-input" placeholder="+91 98765 43210" required />
+                  <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 98765 43210" required />
                 </div>
               </div>
               <div class="form-group">
                 <label for="budget">Budget Range <span class="req">*</span></label>
                 <div class="input-wrap select-wrap">
                   <i class="fa-solid fa-indian-rupee-sign input-icon"></i>
-                  <select id="budget" class="form-input form-select" required>
+                  <select id="budget" name="budget" class="form-input form-select" required>
                     <option value="" disabled selected>Select a range</option>
                     <option value="0-5k">&#8377;0 &ndash; &#8377;5,000</option>
                     <option value="5k-15k">&#8377;5,000 &ndash; &#8377;15,000</option>
@@ -265,13 +265,13 @@
               <label for="subject">Subject <span class="req">*</span></label>
               <div class="input-wrap">
                 <i class="fa-solid fa-tag input-icon"></i>
-                <input type="text" id="subject" class="form-input" placeholder="e.g. Business Website for my startup" required />
+                <input type="text" id="subject" name="subject" class="form-input" placeholder="e.g. Business Website for my startup" required />
               </div>
             </div>
 
             <div class="form-group">
               <label for="message">Project Details <span class="req">*</span></label>
-              <textarea id="message" class="form-textarea" placeholder="Describe your project — goals, timeline, references or anything else you would like me to know..." required></textarea>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Describe your project — goals, timeline, references or anything else you would like me to know..." required></textarea>
             </div>
 
             <button type="submit" class="form-submit" id="submit-btn">
