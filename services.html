@@ -503,14 +503,52 @@
 
   <script src="assets/js/main.js"></script>
   <script>
+    // Tab switching (if any)
     function openTab(e, panelId) {
-      // Remove active from all buttons & panels
       document.querySelectorAll('.srv-tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.srv-panel').forEach(p => p.classList.remove('active'));
-      // Activate clicked
       e.currentTarget.classList.add('active');
       document.getElementById(panelId).classList.add('active');
     }
+
+    // ScrollSpy for Service Index
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.srv-row');
+      const navLinks = document.querySelectorAll('.srv-nav-link');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '-30% 0px -60% 0px', // Triggers when the section reaches upper-middle of viewport
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`.srv-nav-link[href="#${id}"]`);
+            if (activeLink) activeLink.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach(sec => observer.observe(sec));
+      
+      // Smooth scroll for the sidebar links
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            // Offset for fixed navbar if needed (approx 80px)
+            const topPos = targetSection.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top: topPos, behavior: 'smooth' });
+          }
+        });
+      });
+    });
   </script>
 </body>
 
