@@ -1166,12 +1166,12 @@
     .layout-mode-active .ver-panel { box-shadow: 0 0 0 2px #4caf50; transition: 0.3s; margin-top: 40px; margin-bottom: 40px; }
     
     .break-inserter {
-      height: 16px; margin: 2px 0; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.2s; position: relative;
+      height: 24px; margin: 8px 0; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.2s; position: relative;
     }
-    .layout-mode-active .break-inserter { opacity: 0.2; }
-    .layout-mode-active .break-inserter:hover { opacity: 1; }
+    .layout-mode-active .break-inserter { opacity: 1; background: rgba(76, 175, 80, 0.05); border-radius: 4px; }
+    .layout-mode-active .break-inserter:hover { background: rgba(76, 175, 80, 0.15); }
     .break-inserter::before { content: ''; width: 100%; height: 2px; background: #4caf50; position: absolute; }
-    .break-inserter::after { content: '+ Add Page Break'; background: #4caf50; color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 10px; z-index: 1; position: relative; font-weight: 600; }
+    .break-inserter::after { content: '+ Add Page Break Here'; background: #4caf50; color: #fff; font-size: 11px; padding: 4px 10px; border-radius: 12px; z-index: 1; position: relative; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
 
     .force-break-marker {
       height: 24px; margin: 10px 0; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 1 !important; position: relative;
@@ -3116,22 +3116,8 @@
     }
 
     function injectInserters() {
-      const containers = document.querySelectorAll('.ver-panel');
-      containers.forEach(container => {
-        const sections = Array.from(container.children);
-        sections.forEach(sec => {
-          addBreakBtnBefore(sec);
-          const items = Array.from(sec.children);
-          items.forEach(item => {
-            if (item.classList.contains('v1-exp') || item.classList.contains('v1-proj') || 
-                item.classList.contains('v2-exp') || item.classList.contains('v2-proj') ||
-                item.classList.contains('v3-exp') || item.classList.contains('v3-proj') ||
-                item.tagName === 'LI') {
-              addBreakBtnBefore(item);
-            }
-          });
-        });
-      });
+      const breakableElements = document.querySelectorAll('.v1-section, .v1-exp, .v1-proj-card, .v2-sec, .v2-entry, .v2-proj, .v2-sec-title, .v3-sec, .v3-entry, .v3-proj, .v3-sec-title, .v1-header, .v2-header, .v3-header');
+      breakableElements.forEach(el => addBreakBtnBefore(el));
     }
 
     function addBreakBtnBefore(el) {
