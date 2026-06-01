@@ -1207,7 +1207,7 @@
     <div class="print-settings-row">
       <label for="printScale">Print Scale</label>
       <input type="range" id="printScale" min="0.75" max="1.1" step="0.01" value="1" oninput="updatePrintScale()">
-      <span id="printScaleVal">100%</span>
+      <span id="printScaleVal" style="display:inline-block; width:35px; text-align:right;">100%</span>
     </div>
     <div class="print-settings-note">
       <b>1.</b> Turn on Layout Mode.<br><b>2.</b> Hover between sections to reveal insert lines.<br><b>3.</b> Click to force a Page Break.<br><b>4.</b> Adjust Scale to squeeze content.
@@ -3095,6 +3095,21 @@
     function togglePrintSettings() {
       const p = document.getElementById('printSettings');
       p.style.display = p.style.display === 'none' || p.style.display === '' ? 'block' : 'none';
+    }
+
+        function updatePrintMargins() {
+      const t = document.getElementById('printMarginTop').value;
+      const b = document.getElementById('printMarginBottom').value;
+      document.getElementById('printMarginTopVal').textContent = t + 'mm';
+      document.getElementById('printMarginBottomVal').textContent = b + 'mm';
+      
+      let styleEl = document.getElementById('dynamic-print-margins');
+      if (!styleEl) {
+        styleEl = document.createElement('style');
+        styleEl.id = 'dynamic-print-margins';
+        document.head.appendChild(styleEl);
+      }
+      styleEl.innerHTML = '@media print { @page { margin: ' + t + 'mm 10mm ' + b + 'mm 10mm; } }';
     }
 
     function updatePrintScale() {
