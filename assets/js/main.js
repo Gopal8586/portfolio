@@ -57,8 +57,9 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Active nav link — detect current page (works on localhost AND Vercel / clean URLs)
-const rawPage = window.location.pathname.split('/').pop() || 'index.html';
+// Active nav link — detect current page (works on localhost AND Vercel / clean URLs / trailing slashes)
+const pathSegments = window.location.pathname.replace(/\/$/, '').split('/');
+const rawPage = pathSegments.pop() || 'index.html';
 const page = rawPage.replace(/\.html$/, '') || 'index';
 
 document.querySelectorAll('.nav-link').forEach(link => {
