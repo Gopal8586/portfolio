@@ -8,7 +8,7 @@
 .bio-inner {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: stretch;
   gap: clamp(40px, 6vw, 80px);
 }
 
@@ -19,7 +19,7 @@
 
 .bio-img-wrap {
   width: 100%;
-  aspect-ratio: 3/4;
+  height: 100%;
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
@@ -796,7 +796,8 @@
 
 @media (max-width: 900px) {
   .bio-inner { flex-direction: column; text-align: center; }
-  .bio-image { margin: 0 auto; max-width: 320px; }
+  .bio-image { margin: 0 auto; max-width: 320px; width: 100%; }
+  .bio-img-wrap { height: auto; aspect-ratio: 3/4; }
   .bio-desc { margin-left: auto; margin-right: auto; }
 }
 
