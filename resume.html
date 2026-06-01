@@ -1138,7 +1138,7 @@
 
       @page {
         size: Letter portrait;
-        margin: 0;
+        margin: 12mm 10mm 15mm 10mm;
       }
 
       .v3-entry,
@@ -3137,7 +3137,7 @@
     function addBreakBtnBefore(el) {
       if (el.previousElementSibling && el.previousElementSibling.classList.contains('break-inserter')) return;
       if (el.previousElementSibling && el.previousElementSibling.classList.contains('force-break-marker')) return;
-      if (el.tagName === 'STYLE' || el.tagName === 'SCRIPT' || el.classList.contains('v2-header') || el.classList.contains('v1-header')) return;
+      if (el.tagName === 'STYLE' || el.tagName === 'SCRIPT') return;
       
       const div = document.createElement('div');
       div.className = 'break-inserter';
