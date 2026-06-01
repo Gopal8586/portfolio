@@ -57,11 +57,14 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Active nav link — detect current page
-const page = window.location.pathname.split('/').pop() || 'index.html';
+// Active nav link — detect current page (works on localhost AND Vercel / clean URLs)
+const rawPage = window.location.pathname.split('/').pop() || 'index.html';
+const page = rawPage.replace(/\.html$/, '') || 'index';
+
 document.querySelectorAll('.nav-link').forEach(link => {
-  const href = link.getAttribute('href');
-  if (href === page || (page === '' && href === 'index.html')) {
+  const rawHref = (link.getAttribute('href') || '').split('/').pop();
+  const href = rawHref.replace(/\.html$/, '') || 'index';
+  if (href === page) {
     link.classList.add('active');
   }
 });
