@@ -1152,10 +1152,67 @@
         page-break-inside: avoid;
       }
     }
+    /* --- PRINT LAYOUT MODE --- */
+    .print-settings-panel {
+      position: fixed; top: 70px; right: 20px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 9999; border: 1px solid #ddd; width: 280px; display: none; color: #333;
+    }
+    .print-settings-header { font-weight: 700; margin-bottom: 12px; font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+    .print-settings-row { margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 14px; }
+    .print-settings-row label { cursor: pointer; user-select: none; }
+    .print-settings-panel input[type=range] { width: 120px; }
+    .print-settings-note { font-size: 12px; color: #666; margin-top: 10px; line-height: 1.4; background: #f9f9f9; padding: 8px; border-radius: 4px; }
+
+    .layout-mode-active body { background: #e0e6ed; }
+    .layout-mode-active .resume-container { box-shadow: 0 0 0 2px #4caf50; transition: 0.3s; margin-top: 40px; margin-bottom: 40px; }
+    
+    .break-inserter {
+      height: 16px; margin: 2px 0; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.2s; position: relative;
+    }
+    .layout-mode-active .break-inserter { opacity: 0.2; }
+    .layout-mode-active .break-inserter:hover { opacity: 1; }
+    .break-inserter::before { content: ''; width: 100%; height: 2px; background: #4caf50; position: absolute; }
+    .break-inserter::after { content: '+ Add Page Break'; background: #4caf50; color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 10px; z-index: 1; position: relative; font-weight: 600; }
+
+    .force-break-marker {
+      height: 24px; margin: 10px 0; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 1 !important; position: relative;
+    }
+    .force-break-marker::before { content: ''; width: 100%; height: 2px; background: #f44336; border-style: dashed; position: absolute; }
+    .force-break-marker::after { content: 'âœ‚ Page Break (Click to remove)'; background: #f44336; color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 10px; z-index: 1; position: relative; font-weight: 600; }
+
+    @media print {
+      .print-settings-panel, .layout-btn { display: none !important; }
+      .break-inserter { display: none !important; }
+      .force-break-marker { page-break-before: always !important; height: 0 !important; margin: 0 !important; border: none !important; opacity: 0 !important; overflow: hidden !important; }
+      .force-break-marker::before, .force-break-marker::after { display: none !important; }
+      
+      :root {
+        --print-scale: 1;
+      }
+      .resume-container {
+        zoom: var(--print-scale);
+      }
+    }
   </style>
 </head>
 
 <body>
+  <!-- PRINT SETTINGS PANEL -->
+  <button class="layout-btn" onclick="togglePrintSettings()" style="position:fixed; top:20px; right: 140px; z-index:9999; padding:8px 14px; background:#1a3a6b; color:#fff; border:none; border-radius:6px; cursor:pointer; font-weight:600; font-family:'Inter', sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">âš™ PDF Options</button>
+  <div class="print-settings-panel" id="printSettings">
+    <div class="print-settings-header">PDF Print Layout</div>
+    <div class="print-settings-row">
+      <label for="toggleLayoutMode">Interactive Layout Mode</label>
+      <input type="checkbox" id="toggleLayoutMode" onchange="toggleLayout()">
+    </div>
+    <div class="print-settings-row">
+      <label for="printScale">Print Scale</label>
+      <input type="range" id="printScale" min="0.75" max="1.1" step="0.01" value="1" oninput="updatePrintScale()">
+      <span id="printScaleVal">100%</span>
+    </div>
+    <div class="print-settings-note">
+      <b>1.</b> Turn on Layout Mode.<br><b>2.</b> Hover between sections to reveal insert lines.<br><b>3.</b> Click to force a Page Break.<br><b>4.</b> Adjust Scale to squeeze content.
+    </div>
+  </div>
 
   <!-- ════════════════════════════════════════
        TAB HEADER
@@ -3033,6 +3090,70 @@
       } catch (e) { console.error(e); btn.textContent = 'Error'; btn.disabled = false; }
     }
 
+
+    /* --- PRINT LAYOUT LOGIC --- */
+    function togglePrintSettings() {
+      const p = document.getElementById('printSettings');
+      p.style.display = p.style.display === 'none' || p.style.display === '' ? 'block' : 'none';
+    }
+
+    function updatePrintScale() {
+      const val = document.getElementById('printScale').value;
+      document.getElementById('printScaleVal').textContent = Math.round(val * 100) + '%';
+      document.documentElement.style.setProperty('--print-scale', val);
+    }
+
+    let layoutModeActive = false;
+    function toggleLayout() {
+      layoutModeActive = document.getElementById('toggleLayoutMode').checked;
+      if (layoutModeActive) {
+        document.documentElement.classList.add('layout-mode-active');
+        injectInserters();
+      } else {
+        document.documentElement.classList.remove('layout-mode-active');
+        removeInserters();
+      }
+    }
+
+    function injectInserters() {
+      const containers = document.querySelectorAll('.resume-container');
+      containers.forEach(container => {
+        const sections = Array.from(container.children);
+        sections.forEach(sec => {
+          addBreakBtnBefore(sec);
+          const items = Array.from(sec.children);
+          items.forEach(item => {
+            if (item.classList.contains('v1-exp') || item.classList.contains('v1-proj') || 
+                item.classList.contains('v2-exp') || item.classList.contains('v2-proj') ||
+                item.classList.contains('v3-exp') || item.classList.contains('v3-proj') ||
+                item.tagName === 'LI') {
+              addBreakBtnBefore(item);
+            }
+          });
+        });
+      });
+    }
+
+    function addBreakBtnBefore(el) {
+      if (el.previousElementSibling && el.previousElementSibling.classList.contains('break-inserter')) return;
+      if (el.previousElementSibling && el.previousElementSibling.classList.contains('force-break-marker')) return;
+      if (el.tagName === 'STYLE' || el.tagName === 'SCRIPT' || el.classList.contains('v2-header') || el.classList.contains('v1-header')) return;
+      
+      const div = document.createElement('div');
+      div.className = 'break-inserter';
+      div.onclick = function() {
+        if (div.classList.contains('force-break-marker')) {
+          div.className = 'break-inserter';
+        } else {
+          div.className = 'force-break-marker';
+        }
+      };
+      el.parentNode.insertBefore(div, el);
+    }
+
+    function removeInserters() {
+      document.querySelectorAll('.break-inserter, .force-break-marker').forEach(el => el.remove());
+    }
   </script>
 </body>
 
