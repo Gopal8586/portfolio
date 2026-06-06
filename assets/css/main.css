@@ -188,7 +188,7 @@ ul {
 }
 
 .section-title {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(1.8rem, 4.5vw, 3.5rem);
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1.15;
